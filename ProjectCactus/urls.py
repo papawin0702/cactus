@@ -13,14 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from ProjectCactus import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    path('signup/', views.signup_view, name="blogs_signup"),
+    path('login/', views.login_view, name="blogs_login"),
+    path('logout/', views.logout_view, name="blogs_logout"),
+    path('login/', views.log),
     path('', views.hello),
     path('admin/', admin.site.urls),
     path('auth/', include('rest_registration.api.urls')),
